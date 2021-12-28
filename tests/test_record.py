@@ -1,6 +1,10 @@
+import pytest
+
 from measurement.record import MeasurementRecord
+from measurement.errors import MeasurementRecordError
 
 good_header = 'P.01(1210430001500)(00)(15)(4)(1.9)(kWh)(3.9)(kVArh)(2.9)(kWh)(4.9)(kVArh)'
+bad_header = 'P.01(...)(00)(15)(4)(xx)(kWh)(xx)(kVArh)(xx)(kWh)(xx)(kVArh)'
 
 some_good_data = [
     '(0.116)(0.060)(0.000)(0.022)',
@@ -8,15 +12,36 @@ some_good_data = [
     '(0.088)(0.012)(0.000)(0.030)',
 ]
 
+some_bad_data = [
+    '(0.07 )(0.)(0-000)(0.032)',
+]
+
+@pytest.fixture
+def mrecord():
+    return MeasurementRecord(header_raw=good_header)
 
 
-def test_read_good_header():
+def test_check_header():
     assert MeasurementRecord.is_header(good_header)
-    MeasurementRecord(header_raw=good_header)
+    assert not MeasurementRecord.is_header(bad_header)
 
 
-def test_read_date():
-    mrecord = MeasurementRecord(header_raw=good_header)
+def test_read_bad_header():
+    with pytest.raises(
+                       MeasurementRecordError,
+                       match='EX003: Error en la información del registro'):
+        MeasurementRecord(header_raw=bad_header)
+
+
+def test_read_bad_data(mrecord: MeasurementRecord):
+    with pytest.raises(
+                       MeasurementRecordError,
+                       match='EX003: Error en la información del registro'):
+        for data in some_bad_data:
+            mrecord << data
+
+
+def test_read_date(mrecord: MeasurementRecord):
     # Test the date
     assert mrecord.date.year == 2021
     assert mrecord.date.month == 4
@@ -26,14 +51,12 @@ def test_read_date():
     assert mrecord.date.second == 0
 
 
-def test_read_sample_time():
-    mrecord = MeasurementRecord(header_raw=good_header)
+def test_read_sample_time(mrecord: MeasurementRecord):
     # Test the sample time
     assert mrecord.sample.seconds == 15 * 60
 
 
-def test_read_variables():
-    mrecord = MeasurementRecord(header_raw=good_header)
+def test_read_variables(mrecord: MeasurementRecord):
     # Test the variable parsing
     assert mrecord.variable_size == 4
 
@@ -50,8 +73,7 @@ def test_read_variables():
     assert mrecord.variables[3].unit_name == 'kVArh'
 
 
-def test_read_data():
-    mrecord = MeasurementRecord(header_raw=good_header)
+def test_read_data(mrecord: MeasurementRecord):
     for data in some_good_data:
         mrecord << data
 
