@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath('../../'))
 # -- Project information -----------------------------------------------------
 
 project = 'Electrical Energy Measurement Processing Library'
-copyright = '2021, David Waster'
 author = 'David Waster'
+copyright = f'2021, {author}'
 
 # The full version, including alpha/beta/rc tags
 release = 'MIT'

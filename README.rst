@@ -4,7 +4,7 @@ Electrical Energy Measurement Processing Library
 Este paquete de Python contiene la librería ``measurement`` y sus tests.
 
 Para el desarrollo se codificó y probó unicamente bajo la versión de **Python 3.9.2**,
-y se utilizó la librería externa de xlsxwriter_.
+en una máquina Debian 11, y se utilizó la librería externa de xlsxwriter_.
 
 Preparación
 -----------
