@@ -1,6 +1,6 @@
 from measurement.record import MeasurementRecord
 
-good_header = 'P.01(1210430001500)(00)(15)(4)(1.9)(kWh)(3.9)(kVarh)(2.9)(kWh)(4.9)(kVarh)'
+good_header = 'P.01(1210430001500)(00)(15)(4)(1.9)(kWh)(3.9)(kVArh)(2.9)(kWh)(4.9)(kVArh)'
 
 some_good_data = [
     '(0.116)(0.060)(0.000)(0.022)',
@@ -41,13 +41,13 @@ def test_read_variables():
     assert mrecord.variables[0].unit_name == 'kWh'
 
     assert mrecord.variables[1].value == 3.9
-    assert mrecord.variables[1].unit_name == 'kVarh'
+    assert mrecord.variables[1].unit_name == 'kVArh'
 
     assert mrecord.variables[2].value == 2.9
     assert mrecord.variables[2].unit_name == 'kWh'
 
     assert mrecord.variables[3].value == 4.9
-    assert mrecord.variables[3].unit_name == 'kVarh'
+    assert mrecord.variables[3].unit_name == 'kVArh'
 
 
 def test_read_data():
