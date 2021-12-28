@@ -68,7 +68,7 @@ class Measurement(object):
             else:
                 file.close()
                 logger.warning('Error in line %d', count)
-                raise MeasurementRecordError(line)
+                raise MeasurementRecordError(line.strip())
         file.close()
 
     def save(self) -> str:
