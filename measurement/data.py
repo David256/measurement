@@ -16,7 +16,10 @@ re_data = re.compile(
 
 class MeasurementData(object):
     """
-    Esta clase almacena la información de datos para un período de lectura.
+    Esta clase almacena la información de datos para un período de lectura.v
+
+    Un objeto de :class:`measurement.measurement.MeasurementRecord` puede
+    tener una lista de varios objetos de esta clase.
     """
     def __init__(self, data_raw: str) -> None:
         """

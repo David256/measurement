@@ -20,3 +20,9 @@ para guardar los datos. Este método retornará el nombre del archivo generado.
     print(filename)
     # output: >>> /path/to/destination/fileYYMMDD.xls
 
+El archivo generado tendrá un parecido a este:
+
+.. figure:: _static/screenshot.png
+   :alt: La imagen muestra unos cuantos registros de un archivo procesado.
+
+   Captura de pantalla de un archivo XLS generado.

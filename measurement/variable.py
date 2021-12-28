@@ -4,6 +4,9 @@
 class Variable(object):
     """
     Esta clase representa las variables en una cabecera de registro.
+
+    Un objeto de :class:`measurement.measurement.MeasurementRecord` tendrá
+    varios objetos de esta clase.
     """
     def __init__(self, value: float, unit_name: str) -> None:
         """

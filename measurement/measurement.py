@@ -18,7 +18,7 @@ class Measurement(object):
     Esta clase procesa datos de medición de energía elétrica.
 
     Al contruirse se solicita información del archivo fuente y la ruta destino,
-    además, se proporciona el método `save` para guardar los datos procesados.
+    además, se proporciona el método ``save`` para guardar los datos procesados.
     """
     def __init__(self, source_path: str, destination_path: str) -> None:
         """
@@ -76,7 +76,7 @@ class Measurement(object):
         Guarda el archivo procesado en la ruta configurada.
 
         Retorno:
-            str: Retorna el valor de `filename` generado.
+            str: Retorna el valor de ``filename`` generado.
         """
         date = self.records[0].date
         date_str = date.strftime('%y%m%d')
