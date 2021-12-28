@@ -102,7 +102,11 @@ class Measurement(object):
                 worksheet.write(row, col, 'Fecha')
                 for variable in record.variables:
                     col += 1
-                    worksheet.write(row, col, f'Cabezote {variable.value}')
+                    worksheet.write(
+                        row,
+                        col,
+                        f'Cabezote {variable.value} {variable.unit_name}',
+                    )
 
                 # Next state
                 added_header = True
