@@ -4,12 +4,14 @@ Electrical Energy Measurement Processing Library
 Este paquete de Python contiene la librería ``measurement`` y sus tests.
 
 Para el desarrollo se codificó y probó unicamente bajo la versión de **Python 3.9.2**,
-en una máquina Debian 11, y se utilizó la librería externa de xlsxwriter_.
+en una máquina Debian 11, y se utilizó la librería externa de xlsxwriter_ para
+crear archivos XLS.
 
 Preparación
 -----------
 
-Puede ser instalada con el comando ``pip`` y el archivo de ``requirements.txt``.
+Las librerías externas utilizadas en este proyecto pueden ser instalada con el
+comando ``pip`` y el archivo de ``requirements.txt``.
 
 .. code:: bash
 
@@ -31,7 +33,7 @@ Ejecución
 ---------
 
 Se puede ejecutar el archivo ``main.py``, el cual solicitará datos al usuario
-de forma interactiva para finalmente dar un resultado de la ejecución.
+de forma interactiva para finalmente dar el resultado de la ejecución.
 
 .. code:: bash
 

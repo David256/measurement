@@ -16,7 +16,7 @@ re_data = re.compile(
 
 class MeasurementData(object):
     """
-    Esta clase almacena la información de datos para un período de lectura.v
+    Esta clase almacena la información de datos para un período de lectura.
 
     Un objeto de :class:`measurement.measurement.MeasurementRecord` puede
     tener una lista de varios objetos de esta clase.
