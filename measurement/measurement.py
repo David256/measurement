@@ -14,7 +14,18 @@ import xlsxwriter
 
 
 class Measurement(object):
+    """
+    Esta clase procesa datos de medición de energía elétrica.
+
+    Al contruirse se solicita información del archivo fuente y la ruta destino,
+    además, se proporciona el método `save` para guardar los datos procesados.
+    """
     def __init__(self, source_path: str, destination_path: str) -> None:
+        """
+        Argumentos:
+            source_path (str): La ruta al archivo fuente.
+            destination_path (str): La ruta destino.
+        """
         object.__init__(self)
         self.source_path = source_path
         self.destination_path = destination_path
