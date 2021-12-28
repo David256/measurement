@@ -4,6 +4,7 @@ import re
 import datetime
 
 from .data import MeasurementData
+from .variable import Variable
 from .errors import MeasurementRecordError
 from .log import logger
 
@@ -23,6 +24,7 @@ class MeasurementRecord(object):
         super().__init__()
         self.header_raw = header_raw
         self.data: list[MeasurementData] = []
+        self.variables: list[Variable] = []
         # Get data from header
         matched = re_header.search(self.header_raw)
         if matched is None:
@@ -61,6 +63,23 @@ class MeasurementRecord(object):
         except Exception as e:
             logger.error(e)
             MeasurementRecordError(header_raw)
+
+        # Get variable size and variables
+        try:
+            variable_size_str = matched[9]
+            self.variable_size = int(variable_size_str)
+            offset = 10
+
+            for i in range(offset, offset + (self.variable_size*2), 2):
+                value_str = matched[i]
+                unit_name = matched[i + 1]
+                logger.debug('Get %s and %s', value_str, unit_name)
+                self.variables.append(Variable(float(value_str), unit_name))
+        except Exception as e:
+            logger.error(e)
+            MeasurementRecordError(header_raw)
+
+
 
     @staticmethod
     def is_header(header_raw: str):
