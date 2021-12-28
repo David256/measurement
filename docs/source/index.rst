@@ -12,6 +12,11 @@ Bienvenido a la documentación de Electrical Energy Measurement Processing Libra
 
    readme
    get_started
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Referencia:
+
    modules
 
 
