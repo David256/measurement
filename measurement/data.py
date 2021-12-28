@@ -58,3 +58,6 @@ class MeasurementData(object):
             float: Valor en el índice solicitado.
         """
         return self.__cell[index]
+
+    def __iter__(self):
+        return iter(self.__cell)
