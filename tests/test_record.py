@@ -1,6 +1,6 @@
 from measurement.record import MeasurementRecord
 
-good_header = 'P.01(210430001500)(00)(15)(4)(1.9)(kWh)(3.9)(kVarh)(2.9)(kWh)(4.9)(kVarh)'
+good_header = 'P.01(1210430001500)(00)(15)(4)(1.9)(kWh)(3.9)(kVarh)(2.9)(kWh)(4.9)(kVarh)'
 
 some_good_data = [
     '(0.116)(0.060)(0.000)(0.022)',
@@ -20,7 +20,7 @@ def test_read_date():
     # Test the date
     assert mrecord.date.year == 2021
     assert mrecord.date.month == 4
-    assert mrecord.date.day == 3
+    assert mrecord.date.day == 30
     assert mrecord.date.hour == 0
     assert mrecord.date.minute == 15
     assert mrecord.date.second == 0
@@ -29,8 +29,7 @@ def test_read_date():
 def test_read_sample_time():
     mrecord = MeasurementRecord(header_raw=good_header)
     # Test the sample time
-    assert mrecord.sample.hour == 0
-    assert mrecord.sample.minute == 15
+    assert mrecord.sample.seconds == 15 * 60
 
 
 def test_read_variables():
