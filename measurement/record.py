@@ -36,8 +36,9 @@ class MeasurementRecord(object):
             minute_str = matched[5]
             second_str = matched[6]
             # Create date
+            full_year_str = f'20{year_str}'
             self.date = datetime.datetime(
-                int(year_str),
+                int(full_year_str),
                 int(month_str),
                 int(day_str),
                 int(hour_str),
