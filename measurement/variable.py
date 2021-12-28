@@ -2,7 +2,7 @@
 
 
 class Variable(object):
-    def __init__(self, value, unit_name) -> None:
+    def __init__(self, value: float, unit_name: str) -> None:
         object.__init__(self)
         self.value = value
         self.unit_name = unit_name
