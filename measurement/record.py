@@ -5,6 +5,7 @@ import datetime
 
 from .data import MeasurementData
 from .errors import MeasurementRecordError
+from .log import logger
 
 date_fmt = r'\(1(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)\)'
 sample_time_fmt = r'\((\d\d)\)\((\d\d)\)'
@@ -46,7 +47,20 @@ class MeasurementRecord(object):
                 int(second_str),
             )
         except Exception as e:
+            logger.error(e)
             raise MeasurementRecordError(header_raw)
+
+        # Get data for sample time
+        try:
+            sample_hour_str = matched[7]
+            sample_minute_str = matched[8]
+            self.sample = datetime.timedelta(
+                hours=int(sample_hour_str),
+                minutes=int(sample_minute_str),
+            )
+        except Exception as e:
+            logger.error(e)
+            MeasurementRecordError(header_raw)
 
     @staticmethod
     def is_header(header_raw: str):
