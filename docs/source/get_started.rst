@@ -18,5 +18,5 @@ para guardar los datos. Este método retornará el nombre del archivo generado.
 
     filename = m.save()
     print(filename)
-    # >>> /path/to/destination/fileYYMMDD.xls
+    # output: >>> /path/to/destination/fileYYMMDD.xls
 

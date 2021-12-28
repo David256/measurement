@@ -27,5 +27,20 @@ directorio ``tests`` con el comando:
 
     py.test
 
+Ejecución
+---------
+
+Se puede ejecutar el archivo ``main.py``, el cual solicitará datos al usuario
+de forma interactiva para finalmente dar un resultado de la ejecución.
+
+.. code:: bash
+
+    python main.py
+    >>> Archivo fuente: /path/to/source.txt
+    >>> Archivo destino: /path/to/destination/file
+
+    Estado => True
+    Ruta => /path/to/destination/fileYYMMDD.xls
+
 .. _xlsxwriter: https://xlsxwriter.readthedocs.io/
 .. _pytest: https://docs.pytest.org/en/6.2.x/
