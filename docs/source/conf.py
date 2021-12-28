@@ -22,7 +22,7 @@ author = 'David Waster'
 copyright = f'2021, {author}'
 
 # The full version, including alpha/beta/rc tags
-release = 'MIT'
+release = '1.0.0'
 
 
 # -- General configuration ---------------------------------------------------
