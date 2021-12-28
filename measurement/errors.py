@@ -3,7 +3,7 @@
 
 class MeasurementError(Exception):
     """
-    This exception is thrown  when a generic error happens.
+    Esta excepción es lanzada cuando un error genérico ocurre.
     """
     def __init__(self, code: str, message: str) -> None:
         Exception.__init__(self, f'{code}: {message}')
@@ -11,7 +11,7 @@ class MeasurementError(Exception):
 
 class MeasurementFileNotFoundError(MeasurementError):
     """
-    This exception is thrown when the data file is not found.
+    Esta excepción es lanzada cuando el archivo fuente no es encontrado.
     """
     code = 'EX001'
 
@@ -22,7 +22,7 @@ class MeasurementFileNotFoundError(MeasurementError):
 
 class MeasurementDestinationNotFoundError(MeasurementError):
     """
-    This exception is thrown when the destination file can not be found.
+    Esta excepción es lanzada cuando no se puede acceder a la ruta destino.
     """
     def __init__(self, destination_path: str) -> None:
         message = 'No se encuentra la ruta destino'
@@ -31,8 +31,8 @@ class MeasurementDestinationNotFoundError(MeasurementError):
 
 class MeasurementRecordError(MeasurementError):
     """
-    This exception is thrown when the data format is invalid or it can not be
-    read.
+    Esta excepción es lanzada cuando no se puede leer la información en el
+    registro.
     """
     code = 'EX003'
 
@@ -44,6 +44,8 @@ class MeasurementRecordError(MeasurementError):
 
 class MeasurementUnhandledError(MeasurementError):
     """
+    Esta excepción es lanzada cuando un error de Python o del sistema operativo
+    ocurre.
     """
     code = 'EX004'
 

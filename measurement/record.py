@@ -20,7 +20,19 @@ re_header = re.compile(
 
 
 class MeasurementRecord(object):
+    """
+    Esta clase permite guardar todo el registro asociado a una fecha.
+
+    Cuando se leen los datos, se listan registros bajo una cabecera que
+    proporciona información sobre la fecha, el período de muestreo y los
+    nombres de variables. Después de esta cabecera estarán los valores medidos.
+    """
     def __init__(self, header_raw: str) -> None:
+        """
+        Argumentos:
+            header_raw (str):
+                Línea de texto leído desde archivo para la cabecera.
+        """
         super().__init__()
         self.header_raw = header_raw
         self.data: list[MeasurementData] = []
@@ -80,15 +92,20 @@ class MeasurementRecord(object):
             raise MeasurementRecordError(header_raw)
 
 
-
     @staticmethod
-    def is_header(header_raw: str):
+    def is_header(header_raw: str) -> bool:
+        """
+        Esta función evalúa si una línea de texto es o no una cabecera.
+
+        Retorno:
+            bool: Retorna `True` si los datos son una cabecera.
+        """
         matched = re_header.search(header_raw)
         return matched is not None
 
     def __lshift__(self, data_raw):
         """
-        Append new data to current record
+        Agrega información a un registro.
         """
         if MeasurementData.is_data(data_raw):
             data = MeasurementData(data_raw)
