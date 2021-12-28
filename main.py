@@ -9,6 +9,14 @@ dev_mode = os.environ.get('MEASUREMENT_ENV', 'production') == 'development'
 
 
 def print_result(success: bool, filename: str = None, e: Exception = None):
+    """
+    Imprime el resultado de la operación acorde a los valores proporcionados.
+
+    Argumentos:
+        success (bool): Determina el estado de la ejecución.
+        filename (str, Optional): Ruta del archivo generado.
+        e (Exception, Optional): Error capturado.
+    """
     print('Estado =>', success)
     if filename:
         print('Ruta =>', filename)
