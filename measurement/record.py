@@ -62,7 +62,7 @@ class MeasurementRecord(object):
             )
         except Exception as e:
             logger.error(e)
-            MeasurementRecordError(header_raw)
+            raise MeasurementRecordError(header_raw)
 
         # Get variable size and variables
         try:
@@ -77,7 +77,7 @@ class MeasurementRecord(object):
                 self.variables.append(Variable(float(value_str), unit_name))
         except Exception as e:
             logger.error(e)
-            MeasurementRecordError(header_raw)
+            raise MeasurementRecordError(header_raw)
 
 
 
