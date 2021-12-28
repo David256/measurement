@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from measurement import measurement
+from measurement.measurement import Measurement
 from measurement.errors import MeasurementError, MeasurementUnhandledError
 
 dev_mode = os.environ.get('MEASUREMENT_ENV', 'production') == 'development'
@@ -34,7 +34,7 @@ def main():
 
     try:
         # Read data
-        m = measurement.Measurement(source_path, destination_path)
+        m = Measurement(source_path, destination_path)
 
         # Save processed data
         filename = m.save()
