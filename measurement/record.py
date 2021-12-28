@@ -100,7 +100,26 @@ class MeasurementRecord(object):
         matched = re_header.search(header_raw)
         return matched is not None
 
-    def __lshift__(self, data_raw):
+    def add(self, data_raw: str):
+        """
+        Agrega información a un registro.
+
+        Argumentos:
+            data_raw (str): El dato crudo para ser procesado y agregado.
+
+        También podría usarse el operador de desplazamiento a la izquierda,
+        ``<<``, para agregar los datos.
+
+        .. code:: python
+        
+            measurement_record = MeasurementRecord(...)
+            measurement_record << new_data_1
+            measurement_record << new_data_2
+            ...
+        """
+        self << data_raw
+
+    def __lshift__(self, data_raw: str):
         """
         Agrega información a un registro.
         """
