@@ -24,6 +24,8 @@ class MeasurementDestinationNotFoundError(MeasurementError):
     """
     Esta excepción es lanzada cuando no se puede acceder a la ruta destino.
     """
+    code = 'EX002'
+
     def __init__(self, destination_path: str) -> None:
         message = 'No se encuentra la ruta destino'
         MeasurementError.__init__(self, self.code, message)
