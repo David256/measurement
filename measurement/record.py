@@ -89,7 +89,6 @@ class MeasurementRecord(object):
             logger.error(e)
             raise MeasurementRecordError(header_raw)
 
-
     @staticmethod
     def is_header(header_raw: str) -> bool:
         """

@@ -4,7 +4,9 @@ import os
 
 from .record import MeasurementRecord
 from .data import MeasurementData
-from .errors import MeasurementFileNotFoundError, MeasurementRecordError, MeasurementUnhandledError
+from .errors import MeasurementFileNotFoundError
+from .errors import MeasurementRecordError
+from .errors import MeasurementUnhandledError
 from .errors import MeasurementDestinationNotFoundError
 from .log import logger
 
@@ -59,6 +61,12 @@ class Measurement(object):
         file.close()
 
     def save(self) -> str:
+        """
+        Guarda el archivo procesado en la ruta configurada.
+
+        Retorno:
+            str: Retorna el valor de `filename` generado.
+        """
         date = self.records[0].date
         date_str = date.strftime('%y%m%d')
         filename = f'{self.destination_path}{date_str}.xls'

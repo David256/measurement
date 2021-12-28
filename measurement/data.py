@@ -43,6 +43,9 @@ class MeasurementData(object):
         """
         Determina si una línea de texto para datos de lectura es correcto.
 
+        Argumentos:
+            data_raw (str): Dato a analizar.
+
         Retorno:
             bool: Retorna `True` si el formato es correcto.
         """
