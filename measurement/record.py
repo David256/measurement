@@ -9,7 +9,7 @@ from .errors import MeasurementRecordError
 from .log import logger
 
 date_fmt = r'\(1(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)\)'
-sample_time_fmt = r'\((\d\d)\)\((\d\d)\)'
+sample_time_fmt = r'\([a-zA-Z0-9][a-zA-Z0-9]\)\((\d\d)\)'
 variable_size_fmt = r'\((\d+)\)'
 var_fmt = r'\((\d*\.?\d+)\)\(([a-zA-Z]+)\)'
 
@@ -66,11 +66,9 @@ class MeasurementRecord(object):
 
         # Get data for sample time
         try:
-            sample_hour_str = matched[7]
-            sample_minute_str = matched[8]
+            sample_str = matched[7]
             self.sample = datetime.timedelta(
-                hours=int(sample_hour_str),
-                minutes=int(sample_minute_str),
+                minutes=int(sample_str),
             )
         except Exception as e:
             logger.error(e)
@@ -78,9 +76,9 @@ class MeasurementRecord(object):
 
         # Get variable size and variables
         try:
-            variable_size_str = matched[9]
+            variable_size_str = matched[8]
             self.variable_size = int(variable_size_str)
-            offset = 10
+            offset = 9
 
             for i in range(offset, offset + (self.variable_size*2), 2):
                 value_str = matched[i]
